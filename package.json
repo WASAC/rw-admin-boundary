@@ -1,0 +1,22 @@
+{
+  "name": "rw-admin-boundary",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate": "node index.js",
+    "deploy": "gh-pages -d public"
+  },
+  "author": "Jin IGARASHI",
+  "license": "MIT",
+  "dependencies": {
+    "@watergis/postgis2geojson": "^0.1.7",
+    "deepcopy": "^2.1.0",
+    "dotenv": "^8.2.0",
+    "fs": "*",
+    "gh-pages": "^3.1.0",
+    "load-json-file": "^6.2.0",
+    "path": "^0.12.7"
+  }
+}
