@@ -26,9 +26,8 @@ module.exports = {
               row_to_json((
                 SELECT p FROM (
                   SELECT
-                    p.prov_id, 
-                    p.prov_name as province,
-                    ST_AsText(ST_Centroid(p.geom)) as centroid,
+                    p.prov_id as id, 
+                    p.prov_name as name,
                     sum(v.population) as population, 
                     sum(v.household) as household
                 ) AS p
@@ -56,9 +55,8 @@ module.exports = {
               row_to_json((
                 SELECT p FROM (
                   SELECT
-                    d.dist_id, 
-                    d.district,
-                    ST_AsText(ST_Centroid(d.geom)) as centroid,
+                    d.dist_id as id, 
+                    d.district as name,
                     sum(v.population) as population, 
                     sum(v.household) as household
                 ) AS p
@@ -87,9 +85,8 @@ module.exports = {
               row_to_json((
                 SELECT p FROM (
                   SELECT
-                    s.sect_id, 
-                    s.sector,
-                    ST_AsText(ST_Centroid(s.geom)) as centroid,
+                    s.sect_id as id, 
+                    s.sector as name,
                     sum(v.population) as population, 
                     sum(v.household) as household
                 ) AS p
@@ -118,9 +115,8 @@ module.exports = {
               row_to_json((
                 SELECT p FROM (
                   SELECT
-                    c.cell_id, 
-                    c.cell,
-                    ST_AsText(ST_Centroid(c.geom)) as centroid,
+                    c.cell_id as id, 
+                    c.cell as name,
                     sum(v.population) as population, 
                     sum(v.household) as household
                 ) AS p
@@ -149,9 +145,8 @@ module.exports = {
               row_to_json((
                 SELECT p FROM (
                   SELECT
-                    v.vill_id, 
-                    v.village,
-                    ST_AsText(ST_Centroid(v.geom)) as centroid,
+                    v.vill_id as id, 
+                    v.village as name,
                     v.population, 
                     v.household
                 ) AS p

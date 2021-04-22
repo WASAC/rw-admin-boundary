@@ -43,7 +43,7 @@ const generate = async() =>{
   orgConfig.layers = getLayer('province');
 
   getGeoJSON(orgConfig, (province)=>{
-    const prov_id = province.properties.prov_id;
+    const prov_id = province.properties.id;
     return getLayer('district', (layer=>{
       const newLayer = deepcopy(layer);
       newLayer.geojsonFileName = layer.geojsonFileName.replace(/{prov_id}/g,prov_id);
@@ -53,7 +53,7 @@ const generate = async() =>{
     }));
   }).then(provConfig=>{
     return getGeoJSON(provConfig, (district)=>{
-      const dist_id = district.properties.dist_id.toString();
+      const dist_id = district.properties.id.toString();
       const prov_id = dist_id.substr(0,1);
       return getLayer('sector', (layer=>{
         const newLayer = deepcopy(layer);
@@ -65,7 +65,7 @@ const generate = async() =>{
     })
   }).then(districtConfig=>{
     return getGeoJSON(districtConfig, (sector)=>{
-      const sect_id = sector.properties.sect_id.toString();
+      const sect_id = sector.properties.id.toString();
       const prov_id = sect_id.substr(0,1);
       const dist_id = sect_id.substr(0,2);
       
@@ -79,7 +79,7 @@ const generate = async() =>{
     })
   }).then(sectorConfig=>{
     return getGeoJSON(sectorConfig, (cell)=>{
-      const cell_id = cell.properties.cell_id.toString();
+      const cell_id = cell.properties.id.toString();
       const prov_id = cell_id.substr(0,1);
       const dist_id = cell_id.substr(0,2);
       const sect_id = cell_id.substr(0,4);
