@@ -158,6 +158,7 @@ module.exports = {
               )) AS properties
             FROM public.village v
             WHERE v.cell_id = {cell_id}
+            GROUP BY v.vill_id, v.village, v.geom
             ORDER BY v.cell_id
           ) AS feature
         ) AS featurecollection
