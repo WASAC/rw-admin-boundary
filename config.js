@@ -22,6 +22,7 @@ module.exports = {
           FROM (
             SELECT
               'Feature' AS type,
+              ARRAY[ST_XMin(ST_Extent(p.geom)),ST_YMin(ST_Extent(p.geom)),ST_XMax(ST_Extent(p.geom)),ST_YMax(ST_Extent(p.geom))]::double precision[] as bbox,
               ST_AsGeoJSON(ST_MakeValid(st_simplify(p.geom,1222.99/100000)))::json AS geometry,
               row_to_json((
                 SELECT p FROM (
@@ -51,6 +52,7 @@ module.exports = {
           FROM (
             SELECT
               'Feature' AS type,
+              ARRAY[ST_XMin(ST_Extent(d.geom)),ST_YMin(ST_Extent(d.geom)),ST_XMax(ST_Extent(d.geom)),ST_YMax(ST_Extent(d.geom))]::double precision[] as bbox,
               ST_AsGeoJSON(ST_MakeValid(st_simplify(d.geom,305.75/100000)))::json AS geometry,
               row_to_json((
                 SELECT p FROM (
@@ -81,6 +83,7 @@ module.exports = {
           FROM (
             SELECT
               'Feature' AS type,
+              ARRAY[ST_XMin(ST_Extent(s.geom)),ST_YMin(ST_Extent(s.geom)),ST_XMax(ST_Extent(s.geom)),ST_YMax(ST_Extent(s.geom))]::double precision[] as bbox,
               ST_AsGeoJSON(ST_MakeValid(st_simplify(s.geom,76.44/100000)))::json AS geometry,
               row_to_json((
                 SELECT p FROM (
@@ -111,6 +114,7 @@ module.exports = {
           FROM (
             SELECT
               'Feature' AS type,
+              ARRAY[ST_XMin(ST_Extent(c.geom)),ST_YMin(ST_Extent(c.geom)),ST_XMax(ST_Extent(c.geom)),ST_YMax(ST_Extent(c.geom))]::double precision[] as bbox,
               ST_AsGeoJSON(ST_MakeValid(st_simplify(c.geom,19.11/100000)))::json AS geometry,
               row_to_json((
                 SELECT p FROM (
@@ -141,6 +145,7 @@ module.exports = {
           FROM (
             SELECT
               'Feature' AS type,
+              ARRAY[ST_XMin(ST_Extent(v.geom)),ST_YMin(ST_Extent(v.geom)),ST_XMax(ST_Extent(v.geom)),ST_YMax(ST_Extent(v.geom))]::double precision[] as bbox,
               ST_AsGeoJSON(ST_MakeValid(v.geom))::json AS geometry,
               row_to_json((
                 SELECT p FROM (
